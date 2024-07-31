@@ -13,12 +13,12 @@ class MovieCard {
                     alt="${this._movie.title}"
                     src="/assets/thumbnails/${this._movie.picture}"
                 />
-            </div>
-            <h3 class="fs-16 center">${this._movie.title}</h3>
-            <p class="fs-14 center">
-                <span>${this._movie.released_in}</span>
+                <p class="movie-pitch">${this._movie.synopsis ?? "pas de résumé disponible"}</p>
+            <h3 class="movie-title fs-16 center">${this._movie.title}</h3>
+            <p class="movie-datas fs-14 center">
+                <span class="movie-release">${this._movie.released_in}</span>
                 -
-                <span>${this._movie.duration}</span>
+                <span class="movie-duration">${this._movie.duration}</span>
             </p>
         `
         
