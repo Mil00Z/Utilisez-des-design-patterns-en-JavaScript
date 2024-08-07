@@ -1,19 +1,39 @@
 class App {
-    constructor() {
+    constructor(url) {
         this.$moviesWrapper = document.querySelector('.movies-wrapper')
-        this.moviesApi = new MovieApi('/data/movie-data.json')
+        this.moviesApi = new MovieApi(url);
     }
 
     async main() {
-        const movies = await this.moviesApi.getMovies()
+        const moviesData = await this.moviesApi.getMovies();
 
-        movies.forEach((movie,index) => {
+
+        // const mapOldMovies = moviesData.map(movie => new OldMovie(movie));
+
+        // mapOldMovies.forEach((movie) => {
+
+        //     const Template = new MovieCard(movie)
+        //     this.$moviesWrapper.appendChild(Template.createMovieCard())        
+        // })   
+
+        const mapNewMovies = moviesData.map(movie => new Movie(movie));
+
+        console.log(mapNewMovies);
+
+        mapNewMovies.forEach((movie) => {
             const Template = new MovieCard(movie)
-            console.log(index,Template);
+            
             this.$moviesWrapper.appendChild(Template.createMovieCard())        
-        })    
+        });  
+             
     }
+
 }
 
-const app = new App()
-app.main()
+
+//Paths Fetch
+const oldDatasJson = '/data/old-movie-data.json';
+const newDatasJson = '/data/new-movie-data.json';
+
+const app = new App(newDatasJson);
+app.main();
