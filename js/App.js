@@ -14,6 +14,7 @@ class App {
 
         const stalonemoviesData = await this.staloneMoviesApi.getMovies();
 
+    
         this.$moviesWrapper.style.setProperty('--gridCol',3);
         let newMoviesList = document.createElement('div');
         newMoviesList.classList.add('old');
@@ -22,9 +23,11 @@ class App {
         oldMoviesList.classList.add('new');
        
         document.querySelector('.movies-wrapper').append(oldMoviesList,newMoviesList);
-
-
-        const oldMovies = oldmoviesData.map(movie => new MoviesFactory(movie,'old'));
+        
+       
+        const oldMovies = oldmoviesData.map(movie => {
+            return new MoviesFactory(movie,'old')
+        });
 
         oldMovies.forEach(movie => {
                 const Template = new MovieCard(movie);
@@ -34,28 +37,29 @@ class App {
                 )
             });
 
-        const newMovies = newmoviesData.map(movie => new MoviesFactory(movie,'new'));
+        const newMovies = newmoviesData.map(movie => {
+            return new MoviesFactory(movie,'new')
+        });
 
         newMovies.forEach(movie => {
                 const Template = new MovieCard(movie)
                 document.querySelector('.new').append(
-                    Template.createMovieCard()
-                    
+                    Template.createMovieCard()   
                 )
             });
 
 
-
+        
         let newMovieWrapper = document.createElement('div');
         newMovieWrapper.classList.add('stalone');
         this.$moviesWrapper.append(newMovieWrapper);
 
+    
         const staloneMoviesList = stalonemoviesData.map((movie) => {
-            return new MovieStalone(movie,'stalone')
+            return new MoviesFactory(movie,'stalone')
         });
 
 
-    
         staloneMoviesList.forEach((movie)=>{
 
             // movie.medias;

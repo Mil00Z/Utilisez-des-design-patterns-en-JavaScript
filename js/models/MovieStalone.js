@@ -17,7 +17,7 @@ class MovieStalone {
     }
 
     get picture() {
-        return `/assets/${this._picture}`
+        return `./assets/${this._picture}`
     }
 
     get infos() {
@@ -29,7 +29,7 @@ class MovieStalone {
     }
 
     get thumbnail() {
-        return `/assets/thumbnails/${this._thumbnail}`
+        return `./assets/thumbnails/${this._thumbnail}`
     }
 
     get released_in() {
