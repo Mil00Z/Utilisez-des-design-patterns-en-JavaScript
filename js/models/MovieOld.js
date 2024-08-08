@@ -1,4 +1,4 @@
-class OldMovieOld {
+class MovieOld {
     constructor(data) {
 
         this._picture = data.picture;
@@ -39,6 +39,10 @@ class OldMovieOld {
    get picture () {
 
       return `./assets/${this._picture}`;
+   }
+
+   get title() {
+      return this._title;
    }
 
 
