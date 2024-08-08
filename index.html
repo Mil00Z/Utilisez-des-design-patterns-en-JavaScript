@@ -8,24 +8,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" /> 
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/main.css">
 
-    <title>Filmo Patterns - Un projet OpenClassrooms sur les design patterns</title>
+    <title>Filmo Patterns - Designs patterns</title>
 </head>
 <body>
     <header class="main-header">
         <h1>Filmo Patterns</h1>
-        <p>Des films et des design patterns</p>
+        <p>Des films de musclés & des design patterns</p>
     </header>
     <main class="movies-wrapper"></main>
-    <!-- Templates -->
-    <script src="/js/templates/MovieCard.js"></script>
-
-    <!-- Api -->
-    <script src="/js/api/Api.js"></script>
-
-    <!-- Entry point -->
-    <script src="/js/App.js"></script>
 </body>
+
+     <!-- Models -->
+     <script src="./js/models/MovieStalone.js"></script>
+     <script src="./js/models/MovieNew.js"></script>
+     <script src="./js/models/MovieOld.js"></script>
+     <script src="./js/models/MoviesFactory.js"></script>
+         <!-- Templates -->
+     <script src="./js/templates/MovieCard.js"></script>
+     <!-- Api -->
+     <script src="./js/api/Api.js"></script>
+     <!-- Entry point -->
+     <script src="./js/App.js"></script>
 </html>
