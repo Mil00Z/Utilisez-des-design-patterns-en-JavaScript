@@ -1,4 +1,4 @@
-class Movie  {
+class MovieNew  {
 
     constructor(data) {
         this._picture = data.picture;

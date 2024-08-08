@@ -1,39 +1,76 @@
 class App {
-    constructor(url) {
+    constructor() {
         this.$moviesWrapper = document.querySelector('.movies-wrapper')
-        this.moviesApi = new MovieApi(url);
+        this.oldMoviesApi = new MovieApi('/data/old-movie-data.json')
+        this.newMoviesApi = new MovieApi('/data/new-movie-data.json');
+        this.staloneMoviesApi = new MovieApi('/data/external-movie-data.json');
     }
 
     async main() {
-        const moviesData = await this.moviesApi.getMovies();
+        // Ici je récupère mes films de mon fichier old-movie-data.json
+        const oldmoviesData = await this.oldMoviesApi.getMovies();
+
+        const newmoviesData = await this.newMoviesApi.getMovies();
+
+        const stalonemoviesData = await this.staloneMoviesApi.getMovies();
+
+        this.$moviesWrapper.style.setProperty('--gridCol',3);
+        let newMoviesList = document.createElement('div');
+        newMoviesList.classList.add('old');
+
+        let oldMoviesList = document.createElement('div');
+        oldMoviesList.classList.add('new');
+       
+        document.querySelector('.movies-wrapper').append(oldMoviesList,newMoviesList);
 
 
-        // const mapOldMovies = moviesData.map(movie => new OldMovie(movie));
+        const oldMovies = oldmoviesData.map(movie => new MoviesFactory(movie,'old'));
 
-        // mapOldMovies.forEach((movie) => {
+        oldMovies.forEach(movie => {
+                const Template = new MovieCard(movie);
+        
+                document.querySelector('.old').append(
+                    Template.createMovieCard()
+                )
+            });
 
-        //     const Template = new MovieCard(movie)
-        //     this.$moviesWrapper.appendChild(Template.createMovieCard())        
-        // })   
+        const newMovies = newmoviesData.map(movie => new MoviesFactory(movie,'new'));
 
-        const mapNewMovies = moviesData.map(movie => new Movie(movie));
+        newMovies.forEach(movie => {
+                const Template = new MovieCard(movie)
+                document.querySelector('.new').append(
+                    Template.createMovieCard()
+                    
+                )
+            });
 
-        console.log(mapNewMovies);
 
-        mapNewMovies.forEach((movie) => {
-            const Template = new MovieCard(movie)
+
+        let newMovieWrapper = document.createElement('div');
+        newMovieWrapper.classList.add('stalone');
+        this.$moviesWrapper.append(newMovieWrapper);
+
+        const staloneMoviesList = stalonemoviesData.map((movie) => {
+            return new MovieStalone(movie,'stalone')
+        });
+
+
+    
+        staloneMoviesList.forEach((movie)=>{
+
+            // movie.medias;
+            // movie.infos;
             
-            this.$moviesWrapper.appendChild(Template.createMovieCard())        
-        });  
-             
+            const Template = new MovieCard(movie);
+            document.querySelector('.stalone').append(
+                Template.createMovieCard()
+                
+            )
+        })
+
     }
 
 }
 
-
-//Paths Fetch
-const oldDatasJson = '/data/old-movie-data.json';
-const newDatasJson = '/data/new-movie-data.json';
-
-const app = new App(newDatasJson);
+const app = new App();
 app.main();

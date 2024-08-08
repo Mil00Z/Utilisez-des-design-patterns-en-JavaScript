@@ -1,5 +1,4 @@
-class OldMovie {
-
+class OldMovieOld {
     constructor(data) {
 
         this._picture = data.picture;
@@ -10,39 +9,37 @@ class OldMovie {
         
     }
 
- get title() {
+   get duration() {
+         return this._duration
+   }
 
-    return this._title;
+   get synopsis() {
 
- }
+      return this._synopsis;
 
- get synopsis() {
+   }
 
-    return this._synopsis;
+   get duration() {
 
- }
+      return this._duration;
 
- get duration() {
+   }
 
-    return this._duration;
+   get released_in() {
 
- }
+      return this._released_in;
+   }
 
- get released_in() {
+   get thumbnails() {
+      
+      return `./assets/thumbnails/${this._picture}`;
 
-    return this._released_in;
- }
+   }
 
- get thumbnails() {
-    
-    return `./assets/thumbnails/${this._picture}`;
+   get picture () {
 
- }
-
- get picture () {
-
-    return `./assets/${this._picture}`;
- }
+      return `./assets/${this._picture}`;
+   }
 
 
 

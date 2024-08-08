@@ -5,7 +5,8 @@ class MovieCard {
 
     createMovieCard() {
         const $wrapper = document.createElement('div')
-        $wrapper.classList.add('movie-card-wrapper')
+        $wrapper.classList.add('movie-card-wrapper');
+       
 
         const movieCard = `
             <div class="movie-thumbnail center">

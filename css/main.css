@@ -46,14 +46,32 @@ body {
 
 /* Movies Wrapper */
 .movies-wrapper {
-    --gap:4dvh;
+    --gridCol:8;
     width: 90%;
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
-    row-gap:var(--gap);
+    row-gap:var(--gap); */
     margin-inline: auto;
-    /* display: grid;
-    grid-template-columns: repeat(8, 1fr); */
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+}
+
+.old {
+    padding:1rem;
+    background:white;
+    
+}
+
+.new {
+    padding:1rem;
+    color:white;
+    background:blue;
+}
+
+.stalone {
+    padding:1rem;
+    color:white;
+    background:red;
 }
 
 
